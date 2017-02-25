@@ -1,0 +1,1 @@
+# gpiodump-mt7620
