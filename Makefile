@@ -6,17 +6,15 @@ else
 	STRIP ?= strip
 endif
 
-LDFLAGS ?= "-static"
+LDFLAGS ?= -static
 
 gpiodump: gpiodump.c
 	$(CC) gpiodump.c -o gpiodump -Wall $(LDFLAGS)
 	$(STRIP) gpiodump
 
 clean:
-	rm -f gpiodump gpiodump-amd64 gpiodump-mipsel
+	rm -f gpiodump gpiodump-mipsel-static
 
 release: clean
 	make gpiodump CROSS_COMPILE=/opt/buildroot-gcc342/bin/mipsel-linux-
 	mv gpiodump gpiodump-mipsel-static
-	make gpiodump LDFLAGS=
-	mv gpiodump gpiodump-amd64
