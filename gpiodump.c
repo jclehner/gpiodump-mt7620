@@ -101,7 +101,12 @@ int main(int argc, char **argv)
 	if (argc > 1) {
 		dump(false, strtoul(argv[1], NULL, 16));
 	} else {
+#ifdef __mips
 		dump(true, 0);
+#else
+		fprintf(stderr, "usage: gpiodump <value>\n");
+		return 1;
+#endif
 	}
 
 	return 0;
